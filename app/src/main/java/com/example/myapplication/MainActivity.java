@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
     private int id;
+    private int cd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
