@@ -1,12 +1,13 @@
-package com.example.myapplication;
+package com.example.myapplication.view;
 
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.myapplication.R;
+
 public class MainActivity extends AppCompatActivity {
-    private int id;
-    private int cd;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?><!--<paths>
+    &lt;!&ndash; external-path:sd ；path:你的应用保存文件的根目录；name随便定义&ndash;&gt;
+    <external-path path="Android/data/com.shengshi.shna/crash/camera/" name="files_path" />
+</paths>-->
+
+<resources>
+    <paths>
+        <root-path
+            name="camera_photos"
+            path="" />
+    </paths>
+</resources>

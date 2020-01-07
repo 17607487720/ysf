@@ -1,14 +1,7 @@
 apply plugin: 'com.android.application'
 
 android {
-    signingConfigs {
-        debug {
-            storeFile file('../sign/android.keystore')
-            storePassword 'bingdu9-'
-            keyPassword 'bingdu9-'
-            keyAlias = 'android'
-        }
-    }
+
     compileSdkVersion rootProject.ext.compileSdkVersion
     defaultConfig {
         applicationId "com.huiyi31.qiandao"
@@ -48,7 +41,7 @@ android {
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation 'androidx.appcompat:appcompat:1.0.2'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
     testImplementation 'junit:junit:4.12'
@@ -58,15 +51,17 @@ dependencies {
     implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.0.5.1'
     implementation 'com.scwang.smartrefresh:SmartRefreshHeader:1.0.5.1'
     //rx android
-    implementation 'io.reactivex.rxjava2:rxandroid:2.0.1'
-    implementation 'io.reactivex.rxjava2:rxjava:2.1.8'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
+    implementation 'io.reactivex.rxjava2:rxjava:2.2.9'
     //autodispose
     implementation 'com.uber.autodispose:autodispose:0.8.0'
     implementation 'com.uber.autodispose:autodispose-android-archcomponents:0.8.0'
     //retrofit
-    implementation 'com.squareup.retrofit2:retrofit:2.3.0'
-    implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
-    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
+    implementation 'com.squareup.retrofit2:retrofit:2.6.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.6.0'
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.6.0'
+    implementation 'com.squareup.retrofit2:converter-scalars:2.6.0'
+    implementation 'com.lzy.net:okgo:3.0.4'
     implementation 'com.google.code.gson:gson:2.8.2'
     implementation 'com.facebook.stetho:stetho:1.5.0'
     //图片
@@ -74,13 +69,17 @@ dependencies {
     //room (local)
     implementation 'android.arch.persistence.room:runtime:1.1.1'
     implementation 'android.arch.persistence.room:rxjava2:1.1.1'
-
     //ViewModel
-    implementation "android.arch.lifecycle:extensions:1.1.1"
-    implementation "android.arch.lifecycle:viewmodel:1.1.1"
+    implementation 'android.arch.lifecycle:extensions:1.1.1'
+    implementation 'android.arch.lifecycle:viewmodel:1.1.1'
     //页面适配
     implementation 'me.jessyan:autosize:1.1.1'
+    implementation 'com.android.support:multidex:1.0.3'
     //不重要
     implementation 'us.feras.mdv:markdownview:1.1.0'
-    implementation 'org.jsoup:jsoup:1.10.3'//处理html中的image
+    implementation 'org.jsoup:jsoup:1.10.3'
+    //处理html中的image
+
+
+
 }
