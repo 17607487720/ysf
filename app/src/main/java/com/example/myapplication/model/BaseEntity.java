@@ -9,6 +9,11 @@ public class BaseEntity<T> {
     private String err; //错误信息
     private boolean success;//请求是否正确，true代表http请求成功
 
+    public BaseEntity(T data, boolean success) {
+        this.data = data;
+        this.success = success;
+    }
+
     public T getData() {
         return data;
     }
@@ -31,6 +36,10 @@ public class BaseEntity<T> {
 
     public void setSuccess(boolean success) {
         this.success = success;
+    }
+
+    public static <T> BaseEntity<T> create(boolean isCache, T result) {
+        return new BaseEntity<T>(result, isCache);
     }
 }
 

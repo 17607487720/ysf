@@ -6,6 +6,9 @@ import com.cmonbaby.utils.net.NetChangeObserver;
 import com.cmonbaby.utils.net.NetStateReceiver;
 import com.cmonbaby.utils.net.NetType;
 
+import io.realm.Realm;
+import io.realm.RealmConfiguration;
+
 public class App extends MultiDexApplication {
     /** 网络是否已打开已获得 */
     protected boolean networkAvailable;
@@ -30,11 +33,24 @@ public class App extends MultiDexApplication {
         super.onCreate();
         app = this;
         initNetWork();
+        initRealm();
     }
 
     /** 加入网络监听 */
     protected void joinNetListener(BaseActivity activity) {
         this.activity = activity;
+    }
+
+    private void initRealm(){
+        //初始化数据库
+        Realm.init(this);
+        RealmConfiguration config = new RealmConfiguration.Builder()
+                .name("qiandao.realm")//指定数据库的名称。如不指定默认名为default。
+                .schemaVersion(0)
+                .deleteRealmIfMigrationNeeded()//声明版本冲突时自动删除原数据库，开发时候打开
+//                .inMemory()// 声明数据库只在内存中持久化
+                .build();
+        Realm.setDefaultConfiguration(config);
     }
 
     private void initNetWork() {
