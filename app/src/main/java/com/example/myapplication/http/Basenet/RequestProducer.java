@@ -1,9 +1,9 @@
-package com.example.myapplication.http;
+package com.example.myapplication.http.Basenet;
 
 import android.util.Log;
 
 import com.example.myapplication.http.realm.HttpCache;
-import com.example.myapplication.model.BaseEntity;
+import com.example.myapplication.model.BaseResponse;
 import com.google.gson.Gson;
 
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -17,12 +17,12 @@ import rx.Subscription;
 
 public class RequestProducer<T> extends AtomicBoolean implements Subscription, Producer {
     private final Call call;
-    private final Subscriber<? super BaseEntity<T>> subscriber;
+    private final Subscriber<? super BaseResponse<T>> subscriber;
     private final Class<T> tClass;
     private boolean keepCache;
     private boolean takeCache;
 
-    RequestProducer(Call call, Subscriber<? super BaseEntity<T>> subscriber, Class<T> tClass, boolean keepCache, boolean takeCache) {
+    RequestProducer(Call call, Subscriber<? super BaseResponse<T>> subscriber, Class<T> tClass, boolean keepCache, boolean takeCache) {
         this.call = call;
         this.subscriber = subscriber;
         this.tClass = tClass;
@@ -50,7 +50,7 @@ public class RequestProducer<T> extends AtomicBoolean implements Subscription, P
                     if (cache != null) {
                         if (!subscriber.isUnsubscribed()) {
                             hasCache = true;
-                            subscriber.onNext(BaseEntity.create(true, cache));
+                            subscriber.onNext(BaseResponse.create(true, cache));
                         }
                     }
                 } catch (Exception e) {
@@ -75,7 +75,7 @@ public class RequestProducer<T> extends AtomicBoolean implements Subscription, P
                     }
                     if (!subscriber.isUnsubscribed()) {
                     }
-                    subscriber.onNext(BaseEntity.create(false, result));
+                    subscriber.onNext(BaseResponse.create(false, result));
                     if (keepCache) {
                         Realm realm = Realm.getDefaultInstance();
                         realm.beginTransaction();

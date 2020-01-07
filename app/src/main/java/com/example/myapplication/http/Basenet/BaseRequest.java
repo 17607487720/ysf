@@ -1,4 +1,4 @@
-package com.example.myapplication.http;
+package com.example.myapplication.http.Basenet;
 
 import com.lzy.okgo.cache.CacheMode;
 

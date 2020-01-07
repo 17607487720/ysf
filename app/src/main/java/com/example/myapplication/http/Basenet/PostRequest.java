@@ -1,4 +1,4 @@
-package com.example.myapplication.http;
+package com.example.myapplication.http.Basenet;
 
 import com.example.myapplication.utils.HttpUtils;
 

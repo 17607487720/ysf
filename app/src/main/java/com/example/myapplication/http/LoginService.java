@@ -1,6 +1,6 @@
 package com.example.myapplication.http;
 
-import com.example.myapplication.model.BaseEntity;
+import com.example.myapplication.model.BaseResponse;
 import com.example.myapplication.model.BaseString;
 
 import java.util.Map;
@@ -26,7 +26,7 @@ public interface LoginService {
      * 获取版本
      */
     @GET("version")
-    Observable<BaseEntity<Object>> version();
+    Observable<BaseResponse<Object>> version();
 
     /**
      * 下载版本
@@ -39,7 +39,7 @@ public interface LoginService {
      */
     @POST("login2")
     @FormUrlEncoded
-    Observable<BaseEntity<Object>> login(@FieldMap Map<String, String> params);
+    Observable<BaseResponse<Object>> login(@FieldMap Map<String, String> params);
 
     /**
      * 修改密码

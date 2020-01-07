@@ -1,13 +1,13 @@
-package com.example.myapplication.http;
+package com.example.myapplication.http.Basenet;
 
-import com.example.myapplication.model.BaseEntity;
+import com.example.myapplication.model.BaseResponse;
 import com.example.myapplication.utils.RxUtils;
 
 import okhttp3.Call;
 import rx.Observable;
 import rx.Subscriber;
 
-public class RxNetOnSubscribe<T> implements Observable.OnSubscribe<BaseEntity<T>> {
+public class RxNetOnSubscribe<T> implements Observable.OnSubscribe<BaseResponse<T>> {
 
     private final Call call;
     private boolean keepCache;
@@ -48,17 +48,17 @@ public class RxNetOnSubscribe<T> implements Observable.OnSubscribe<BaseEntity<T>
     }
 
     @Override
-    public void call(Subscriber<? super BaseEntity<T>> subscriber) {
+    public void call(Subscriber<? super BaseResponse<T>> subscriber) {
         RequestProducer<T> requestArbiter = new RequestProducer<T>(call, subscriber, tClass, keepCache, takeCache);
         subscriber.add(requestArbiter);
         subscriber.setProducer(requestArbiter);
     }
 
-    public Observable<BaseEntity<T>> toRx() {
+    public Observable<BaseResponse<T>> toRx() {
         return Observable.create(this);
     }
 
-    public Observable<BaseEntity<T>> toRxMain() {
+    public Observable<BaseResponse<T>> toRxMain() {
         return Observable.create(this).compose(RxUtils.subscribeInMain());
     }
 }

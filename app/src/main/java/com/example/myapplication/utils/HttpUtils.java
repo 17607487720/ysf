@@ -1,6 +1,6 @@
 package com.example.myapplication.utils;
 
-import com.example.myapplication.http.QDNet;
+import com.example.myapplication.http.Basenet.QDNet;
 
 import java.io.File;
 import java.io.UnsupportedEncodingException;
